@@ -1,29 +1,29 @@
 package com.international.money.transfer.domain.mappers;
 
-import com.international.money.transfer.domain.entities.Person;
+import com.international.money.transfer.domain.entities.User;
 import com.international.money.transfer.domain.factories.DocumentFactory;
 import com.international.money.transfer.domain.valueObjects.Email;
-import com.international.money.transfer.infrastructure.entities.PersonEntity;
+import com.international.money.transfer.infrastructure.entities.UserEntity;
 
-public class PersonMapper {
-  public static Person toDomain(PersonEntity entity) {
-    return new Person(
+public class UserMapper {
+  public static User toDomain(UserEntity entity) {
+    return new User(
         entity.getId(),
         entity.getName(),
         entity.getPassword(),
-        entity.getPersonType(),
+        entity.getUserType(),
         entity.getStatus(),
         new Email(entity.getEmail()),
-        DocumentFactory.create(entity.getDocument(), entity.getPersonType())
+        DocumentFactory.create(entity.getDocument(), entity.getUserType())
     );
   }
 
-  public static PersonEntity toEntity(Person domain) {
-    PersonEntity entity = new PersonEntity();
+  public static UserEntity toEntity(User domain) {
+    UserEntity entity = new UserEntity();
     entity.setId(domain.getId());
     entity.setName(domain.getName());
     entity.setPassword(domain.getPassword());
-    entity.setPersonType(domain.getPersonType());
+    entity.setUserType(domain.getUserType());
     entity.setStatus(domain.getStatus());
     entity.setEmail(domain.getEmail().value());
     entity.setDocument(domain.getDocument().getValue());

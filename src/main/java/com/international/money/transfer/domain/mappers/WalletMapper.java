@@ -12,7 +12,7 @@ public class WalletMapper {
         entity.getBalance(),
         entity.getCreatedAt(),
         CurrencyMapper.toDomain(entity.getCurrency()),
-        PersonMapper.toDomain(entity.getPerson())
+        UserMapper.toDomain(entity.getUser())
     );
   }
 
@@ -23,7 +23,7 @@ public class WalletMapper {
     entity.setBalance(domain.getBalance());
     entity.setCreatedAt(domain.getCreatedAt());
     entity.setCurrency(CurrencyMapper.toEntity(domain.getCurrency()));
-    entity.setPerson(PersonMapper.toEntity(domain.getPerson()));
+    entity.setUser(UserMapper.toEntity(domain.getUser()));
     return entity;
   }
 }
