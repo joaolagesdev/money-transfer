@@ -24,7 +24,7 @@ public class CreateCurrencyUseCase implements UseCase<CreateCurrencyInput, Curre
     entity.setStatus(input.status());
     entity.setCreatedAt(new Date());
 
-    CurrencyEntity saved = currencyRepository.save(entity);
-    return CurrencyMapper.toDomain(saved);
+    currencyRepository.save(entity);
+    return CurrencyMapper.toDomain(entity);
   }
 }
