@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity(name = "Wallet")
 @Table(name = "wallets", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"currency_id", "person_id"})
+    @UniqueConstraint(columnNames = {"currency_id", "user_id"})
 })
 public class WalletEntity {
   @Id
@@ -32,8 +32,8 @@ public class WalletEntity {
   private CurrencyEntity currency;
 
   @ManyToOne
-  @JoinColumn(name = "person_id", nullable = false)
-  private PersonEntity person;
+  @JoinColumn(name = "user_id", nullable = false)
+  private UserEntity user;
 
   @OneToMany(mappedBy = "targetWallet")
   private List<TransferEntity> transfersReceived;
@@ -81,12 +81,12 @@ public class WalletEntity {
     this.currency = currency;
   }
 
-  public PersonEntity getPerson() {
-    return person;
+  public UserEntity getUser() {
+    return user;
   }
 
-  public void setPerson(PersonEntity person) {
-    this.person = person;
+  public void setUser(UserEntity user) {
+    this.user = user;
   }
 
   public List<TransferEntity> getTransfersReceived() {

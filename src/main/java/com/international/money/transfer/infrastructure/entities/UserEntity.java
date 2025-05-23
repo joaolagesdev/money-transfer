@@ -1,14 +1,14 @@
 package com.international.money.transfer.infrastructure.entities;
 
-import com.international.money.transfer.domain.enums.PersonType;
+import com.international.money.transfer.domain.enums.UserType;
 import com.international.money.transfer.domain.enums.Status;
 import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity(name = "Person")
-@Table(name = "people")
-public class PersonEntity {
+@Entity(name = "User")
+@Table(name = "users")
+public class UserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -21,7 +21,7 @@ public class PersonEntity {
 
   @Enumerated(EnumType.ORDINAL)
   @Column(nullable = false)
-  private PersonType personType;
+  private UserType userType;
 
   @Enumerated(EnumType.ORDINAL)
   @Column(nullable = false)
@@ -33,7 +33,7 @@ public class PersonEntity {
   @Column(length = 50, unique = true)
   private String document;
 
-  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private List<WalletEntity> wallets;
 
   public Long getId() {
@@ -60,12 +60,12 @@ public class PersonEntity {
     this.password = password;
   }
 
-  public PersonType getPersonType() {
-    return personType;
+  public UserType getUserType() {
+    return userType;
   }
 
-  public void setPersonType(PersonType personType) {
-    this.personType = personType;
+  public void setUserType(UserType userType) {
+    this.userType = userType;
   }
 
   public Status getStatus() {
