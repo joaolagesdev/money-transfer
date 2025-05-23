@@ -31,7 +31,7 @@ public class CurrencyController {
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<CurrencyEntity>> list() {
+  public ResponseEntity<List<CurrencyEntity>> getAll() {
     List<CurrencyEntity> currencies = getUseCase.execute(null);
     return ResponseEntity.ok(currencies);
   }
