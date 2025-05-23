@@ -12,16 +12,16 @@ public class Wallet extends DomainEntity {
   private BigDecimal balance;
   private Date createdAt;
   private Currency currency;
-  private Person person;
+  private User user;
 
   public Wallet(Long id, Status status, BigDecimal balance, Date createdAt,
-                Currency currency, Person person) {
+                Currency currency, User user) {
     this.id = id;
     this.status = status;
     this.balance = balance;
     this.createdAt = createdAt;
     this.currency = currency;
-    this.person = person;
+    this.user = user;
   }
 
   public Long getId() {
@@ -44,8 +44,8 @@ public class Wallet extends DomainEntity {
     return currency;
   }
 
-  public Person getPerson() {
-    return person;
+  public User getUser() {
+    return user;
   }
 
   public void credit(BigDecimal amount) {

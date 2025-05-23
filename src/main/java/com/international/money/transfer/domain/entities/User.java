@@ -1,34 +1,32 @@
 package com.international.money.transfer.domain.entities;
 
 import com.international.money.transfer.domain.entities.base.DomainEntity;
-import com.international.money.transfer.domain.enums.PersonType;
+import com.international.money.transfer.domain.enums.UserType;
 import com.international.money.transfer.domain.enums.Status;
 import com.international.money.transfer.domain.valueObjects.Document;
 import com.international.money.transfer.domain.valueObjects.Email;
 
-import javax.print.Doc;
-
-public class Person extends DomainEntity {
+public class User extends DomainEntity {
   private Long id;
   private String name;
   private String password;
-  private PersonType personType;
+  private UserType userType;
   private Status status;
   private Email email;
   private Document document;
 
-  public Person(
+  public User(
       Long id,
       String name,
       String password,
-      PersonType personType,
+      UserType userType,
       Status status,
       Email email,
       Document document) {
     this.id = id;
     this.name = name;
     this.password = password;
-    this.personType = personType;
+    this.userType = userType;
     this.status = status;
     this.email = email;
     this.document = document;
@@ -58,12 +56,12 @@ public class Person extends DomainEntity {
     this.password = password;
   }
 
-  public PersonType getPersonType() {
-    return personType;
+  public UserType getUserType() {
+    return userType;
   }
 
-  public void setPersonType(PersonType personType) {
-    this.personType = personType;
+  public void setUserType(UserType userType) {
+    this.userType = userType;
   }
 
   public Status getStatus() {
