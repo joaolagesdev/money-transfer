@@ -1,6 +1,6 @@
 package com.international.money.transfer.domain.enums;
 
-public enum PersonType {
+public enum UserType {
     PF,
     PJ
 }
