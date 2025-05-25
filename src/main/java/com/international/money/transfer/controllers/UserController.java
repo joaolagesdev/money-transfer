@@ -5,6 +5,7 @@ import com.international.money.transfer.application.useCases.user.createUser.Cre
 import com.international.money.transfer.application.useCases.user.createUser.CreateUserUseCase;
 import com.international.money.transfer.application.useCases.user.getUsers.GetUsersUseCase;
 import com.international.money.transfer.domain.entities.User;
+import com.international.money.transfer.infrastructure.dtos.UserQueryResponseDto;
 import com.international.money.transfer.infrastructure.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class UserController {
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<UserEntity>> getAll() {
-    List<UserEntity> users = getUseCase.execute(null);
+  public ResponseEntity<List<UserQueryResponseDto>> getAll() {
+    List<UserQueryResponseDto> users = getUseCase.execute(null);
     return ResponseEntity.ok(users);
   }
 }
