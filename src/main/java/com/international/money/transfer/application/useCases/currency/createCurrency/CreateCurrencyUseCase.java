@@ -8,7 +8,7 @@ import com.international.money.transfer.infrastructure.repositories.CurrencyRepo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Service
 public class CreateCurrencyUseCase implements UseCase<CreateCurrencyInput, Currency> {
@@ -18,12 +18,15 @@ public class CreateCurrencyUseCase implements UseCase<CreateCurrencyInput, Curre
 
   @Override
   public Currency execute(CreateCurrencyInput input) {
-    CurrencyEntity entity = new CurrencyEntity();
-    entity.setName(input.name());
-    entity.setAbbreviation(input.abbreviation());
-    entity.setStatus(input.status());
-    entity.setCreatedAt(new Date());
 
+    Currency entityDomain = new Currency(
+        null,
+        input.name(),
+        input.code(),
+        input.status(),
+        LocalDateTime.now()
+    );
+    CurrencyEntity entity = CurrencyMapper.toEntity(entityDomain);
     currencyRepository.save(entity);
     return CurrencyMapper.toDomain(entity);
   }
