@@ -9,7 +9,7 @@ public class CurrencyMapper {
     return new Currency(
         entity.getId(),
         entity.getName(),
-        entity.getAbbreviation(),
+        entity.getCode(),
         entity.getStatus(),
         entity.getCreatedAt()
     );
@@ -19,7 +19,7 @@ public class CurrencyMapper {
     CurrencyEntity entity = new CurrencyEntity();
     entity.setId(domain.getId());
     entity.setName(domain.getName());
-    entity.setAbbreviation(domain.getAbbreviation());
+    entity.setCode(domain.getCode());
     entity.setStatus(domain.getStatus());
     entity.setCreatedAt(domain.getCreatedAt());
     return entity;

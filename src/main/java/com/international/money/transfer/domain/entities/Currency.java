@@ -3,19 +3,19 @@ package com.international.money.transfer.domain.entities;
 import com.international.money.transfer.domain.entities.base.DomainEntity;
 import com.international.money.transfer.domain.enums.Status;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Currency extends DomainEntity {
   private Short id;
   private String name;
-  private String abbreviation;
+  private String code;
   private Status status;
-  private Date createdAt;
+  private LocalDateTime createdAt;
 
-  public Currency(Short id, String name, String abbreviation, Status status, Date createdAt) {
+  public Currency(Short id, String name, String code, Status status, LocalDateTime createdAt) {
     this.id = id;
     this.name = name;
-    this.abbreviation = abbreviation;
+    this.code = code;
     this.status = status;
     this.createdAt = createdAt;
   }
@@ -36,12 +36,12 @@ public class Currency extends DomainEntity {
     this.name = name;
   }
 
-  public String getAbbreviation() {
-    return abbreviation;
+  public String getCode() {
+    return code;
   }
 
-  public void setAbbreviation(String abbreviation) {
-    this.abbreviation = abbreviation;
+  public void setCode(String code) {
+    this.code = code;
   }
 
   public Status getStatus() {
@@ -52,11 +52,11 @@ public class Currency extends DomainEntity {
     this.status = status;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 }

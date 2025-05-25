@@ -4,29 +4,30 @@ import com.international.money.transfer.domain.entities.base.DomainEntity;
 import com.international.money.transfer.domain.enums.TransferStatus;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Transfer extends DomainEntity
 {
-  private Long id;
-  private TransferStatus status;
-  private Wallet sourceWallet;
-  private Wallet targetWallet;
-  private Date createdAt;
-  private BigDecimal valueToTransfer;
-  private BigDecimal transferredValue;
-  private BigDecimal currencyQuote;
-  private Date currencyQuoteDate;
+  private final Long id;
+  private final TransferStatus status;
+  private final Wallet sourceWallet;
+  private final Wallet targetWallet;
+  private final LocalDateTime createdAt;
+  private final BigDecimal transferAmount;
+  private final BigDecimal transferredValue;
+  private final BigDecimal currencyQuote;
+  private final LocalDateTime currencyQuoteDate;
 
   public Transfer(Long id, TransferStatus status, Wallet sourceWallet, Wallet targetWallet,
-                  Date createdAt, BigDecimal valueToTransfer, BigDecimal transferredValue,
-                  BigDecimal currencyQuote, Date currencyQuoteDate) {
+                  LocalDateTime createdAt, BigDecimal transferAmount, BigDecimal transferredValue,
+                  BigDecimal currencyQuote, LocalDateTime currencyQuoteDate) {
     this.id = id;
     this.status = status;
     this.sourceWallet = sourceWallet;
     this.targetWallet = targetWallet;
     this.createdAt = createdAt;
-    this.valueToTransfer = valueToTransfer;
+    this.transferAmount = transferAmount;
     this.transferredValue = transferredValue;
     this.currencyQuote = currencyQuote;
     this.currencyQuoteDate = currencyQuoteDate;
@@ -48,12 +49,12 @@ public class Transfer extends DomainEntity
     return targetWallet;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
   public BigDecimal getValueToTransfer() {
-    return valueToTransfer;
+    return transferAmount;
   }
 
   public BigDecimal getTransferredValue() {
@@ -64,7 +65,7 @@ public class Transfer extends DomainEntity
     return currencyQuote;
   }
 
-  public Date getCurrencyQuoteDate() {
+  public LocalDateTime getCurrencyQuoteDate() {
     return currencyQuoteDate;
   }
 }

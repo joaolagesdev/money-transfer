@@ -14,7 +14,8 @@ public class UserMapper {
         entity.getUserType(),
         entity.getStatus(),
         new Email(entity.getEmail()),
-        DocumentFactory.create(entity.getDocument(), entity.getUserType())
+        DocumentFactory.create(entity.getDocument(), entity.getUserType()),
+        entity.getCreatedAt()
     );
   }
 
@@ -27,6 +28,7 @@ public class UserMapper {
     entity.setStatus(domain.getStatus());
     entity.setEmail(domain.getEmail().value());
     entity.setDocument(domain.getDocument().getValue());
+    entity.setCreatedAt(domain.getCreatedAt());
     return entity;
   }
 }

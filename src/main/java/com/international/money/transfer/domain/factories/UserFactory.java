@@ -6,6 +6,8 @@ import com.international.money.transfer.domain.enums.Status;
 import com.international.money.transfer.domain.valueObjects.Document;
 import com.international.money.transfer.domain.valueObjects.Email;
 
+import java.time.LocalDateTime;
+
 public class UserFactory {
 
   public static User create(String name,
@@ -25,7 +27,8 @@ public class UserFactory {
         userType,
         status,
         createdEmail,
-        createdDocument
+        createdDocument,
+        LocalDateTime.now()
     );
   }
 }

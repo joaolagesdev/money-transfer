@@ -4,17 +4,18 @@ import com.international.money.transfer.domain.entities.base.DomainEntity;
 import com.international.money.transfer.domain.enums.Status;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Wallet extends DomainEntity {
   private Long id;
   private Status status;
   private BigDecimal balance;
-  private Date createdAt;
+  private LocalDateTime createdAt;
   private Currency currency;
   private User user;
 
-  public Wallet(Long id, Status status, BigDecimal balance, Date createdAt,
+  public Wallet(Long id, Status status, BigDecimal balance, LocalDateTime createdAt,
                 Currency currency, User user) {
     this.id = id;
     this.status = status;
@@ -36,7 +37,7 @@ public class Wallet extends DomainEntity {
     return balance;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
@@ -54,7 +55,7 @@ public class Wallet extends DomainEntity {
 
   public void debit(BigDecimal amount) {
     if (this.balance.compareTo(amount) < 0) {
-      throw new IllegalArgumentException("Insufficient balance\n");
+      throw new IllegalArgumentException("Insufficient balance");
     }
     this.balance = this.balance.subtract(amount);
   }

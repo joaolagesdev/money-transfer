@@ -6,6 +6,8 @@ import com.international.money.transfer.domain.enums.Status;
 import com.international.money.transfer.domain.valueObjects.Document;
 import com.international.money.transfer.domain.valueObjects.Email;
 
+import java.time.LocalDateTime;
+
 public class User extends DomainEntity {
   private Long id;
   private String name;
@@ -14,6 +16,7 @@ public class User extends DomainEntity {
   private Status status;
   private Email email;
   private Document document;
+  private LocalDateTime createdAt;
 
   public User(
       Long id,
@@ -22,7 +25,8 @@ public class User extends DomainEntity {
       UserType userType,
       Status status,
       Email email,
-      Document document) {
+      Document document,
+      LocalDateTime createdAt) {
     this.id = id;
     this.name = name;
     this.password = password;
@@ -30,6 +34,15 @@ public class User extends DomainEntity {
     this.status = status;
     this.email = email;
     this.document = document;
+    this.createdAt = createdAt;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   public Long getId() {
