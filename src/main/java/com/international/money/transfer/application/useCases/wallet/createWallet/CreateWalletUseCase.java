@@ -1,7 +1,5 @@
 package com.international.money.transfer.application.useCases.wallet.createWallet;
 
-import com.international.money.transfer.domain.entities.Currency;
-import com.international.money.transfer.domain.entities.User;
 import com.international.money.transfer.domain.entities.Wallet;
 import com.international.money.transfer.domain.enums.Status;
 import com.international.money.transfer.domain.mappers.CurrencyMapper;
@@ -15,7 +13,7 @@ import com.international.money.transfer.infrastructure.repositories.WalletReposi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
@@ -42,7 +40,7 @@ public class CreateWalletUseCase {
         null,
         Status.valueOf(String.valueOf(input.status())),
         input.balance(),
-        new Date(),
+        LocalDateTime.now(),
         CurrencyMapper.toDomain(currency),
         UserMapper.toDomain(user)
     );
