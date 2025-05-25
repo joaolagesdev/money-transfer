@@ -4,7 +4,7 @@ import com.international.money.transfer.domain.enums.TransferStatus;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity(name = "transfer")
 @Table(name = "transfers", uniqueConstraints = {
@@ -27,9 +27,8 @@ public class TransferEntity {
   @JoinColumn(name = "target_wallet_id", nullable = false)
   private WalletEntity targetWallet;
 
-  @Temporal(TemporalType.DATE)
   @Column(name = "created_at", nullable = false)
-  private Date CreatedAt;
+  private LocalDateTime createdAt;
 
   @Column(precision = 15, scale = 2)
   private BigDecimal valueToTransfer;
@@ -40,9 +39,8 @@ public class TransferEntity {
   @Column(precision = 15, scale = 2)
   private BigDecimal currencyQuote;
 
-  @Temporal(TemporalType.DATE)
   @Column(name = "currency_quote_date", nullable = false)
-  private Date CurrencyQuoteDate;
+  private LocalDateTime currencyQuoteDate;
 
   public Long getId() {
     return id;
@@ -76,12 +74,12 @@ public class TransferEntity {
     this.targetWallet = targetWallet;
   }
 
-  public Date getCreatedAt() {
-    return CreatedAt;
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
-    CreatedAt = createdAt;
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
   }
 
   public BigDecimal getValueToTransfer() {
@@ -108,11 +106,11 @@ public class TransferEntity {
     this.currencyQuote = currencyQuote;
   }
 
-  public Date getCurrencyQuoteDate() {
-    return CurrencyQuoteDate;
+  public LocalDateTime getCurrencyQuoteDate() {
+    return currencyQuoteDate;
   }
 
-  public void setCurrencyQuoteDate(Date currencyQuoteDate) {
-    CurrencyQuoteDate = currencyQuoteDate;
+  public void setCurrencyQuoteDate(LocalDateTime currencyQuoteDate) {
+    this.currencyQuoteDate = currencyQuoteDate;
   }
 }

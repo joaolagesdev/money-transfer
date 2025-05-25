@@ -1,9 +1,12 @@
 package com.international.money.transfer.infrastructure.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.international.money.transfer.domain.enums.Status;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -23,15 +26,14 @@ public class WalletEntity {
   @Column(nullable = false, precision = 15, scale = 2)
   private BigDecimal balance;
 
-  @Temporal(TemporalType.DATE)
   @Column(name = "created_at", nullable = false)
-  private Date createdAt;
+  private LocalDateTime createdAt;
 
   @ManyToOne
   @JoinColumn(name = "currency_id", nullable = false)
   private CurrencyEntity currency;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
   private UserEntity user;
 
@@ -65,11 +67,11 @@ public class WalletEntity {
     this.balance = balance;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 

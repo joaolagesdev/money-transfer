@@ -3,9 +3,7 @@ package com.international.money.transfer.infrastructure.entities;
 import com.international.money.transfer.domain.enums.Status;
 import jakarta.persistence.*;
 
-import java.time.Instant;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity(name = "Currency")
 @Table(name = "currencies")
@@ -18,18 +16,14 @@ public class CurrencyEntity {
   private String name;
 
   @Column(nullable = false, length = 5, unique = true)
-  private String abbreviation;
+  private String code;
 
   @Enumerated(EnumType.ORDINAL)
   @Column(nullable = false)
   private Status status;
 
-  @Temporal(TemporalType.DATE)
   @Column(name = "created_at", nullable = false)
-  private Date createdAt;
-
-  @OneToMany(mappedBy = "currency")
-  private List<WalletEntity> wallets;
+  private LocalDateTime createdAt;
 
   public Short getId() {
     return id;
@@ -47,12 +41,12 @@ public class CurrencyEntity {
     this.name = name;
   }
 
-  public String getAbbreviation() {
-    return abbreviation;
+  public String getCode() {
+    return code;
   }
 
-  public void setAbbreviation(String abbreviation) {
-    this.abbreviation = abbreviation;
+  public void setCode(String code) {
+    this.code = code;
   }
 
   public Status getStatus() {
@@ -63,19 +57,11 @@ public class CurrencyEntity {
     this.status = status;
   }
 
-  public Date getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(LocalDateTime createdAt) {
     this.createdAt = createdAt;
-  }
-
-  public List<WalletEntity> getWallets() {
-    return wallets;
-  }
-
-  public void setWallets(List<WalletEntity> wallets) {
-    this.wallets = wallets;
   }
 }

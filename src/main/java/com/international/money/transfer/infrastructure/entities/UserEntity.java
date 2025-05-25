@@ -1,9 +1,11 @@
 package com.international.money.transfer.infrastructure.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.international.money.transfer.domain.enums.UserType;
 import com.international.money.transfer.domain.enums.Status;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "User")
@@ -33,8 +35,19 @@ public class UserEntity {
   @Column(length = 50, unique = true)
   private String document;
 
+  @Column(name = "created_at", nullable = false)
+  private LocalDateTime createdAt;
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private List<WalletEntity> wallets;
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
 
   public Long getId() {
     return id;
